@@ -1,7 +1,19 @@
 package org.roylance.exec2
 
-/**
- * Created by mroylance on 6/20/17.
- */
-class Exec2Task {
+import com.roylance.exec2.Exec2Utilities
+import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.TaskAction
+
+class Exec2Task extends DefaultTask {
+    String workingDir = System.getProperty("user.dir");
+    String commandLine = "";
+    String args = "";
+
+    @TaskAction
+    def run() {
+        println Exec2Utilities.INSTANCE.executeProcess(
+                workingDir,
+                commandLine,
+                args)
+    }
 }

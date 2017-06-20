@@ -1,7 +1,11 @@
 package org.roylance.exec2
 
-/**
- * Created by mroylance on 6/20/17.
- */
-class Exec2Plugin {
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+
+class Exec2Plugin implements Plugin<Project> {
+    @Override
+    void apply(Project project) {
+        project.task('exec2', type:Exec2Task)
+    }
 }
