@@ -1,9 +1,5 @@
-
 allprojects {
 	repositories {
     	mavenCentral()
 	}
 }
-
-group 'org.roylance.exec2'
-version '0.1'

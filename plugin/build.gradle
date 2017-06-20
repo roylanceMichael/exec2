@@ -14,7 +14,37 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
+group 'org.roylance.exec2'
+version "$actualMajor.$actualMinor"
+
 sourceCompatibility = 1.8
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['mavenJava']
+    publish = true
+    pkg {
+        repo = repoName_
+        name = "org.roylance.exec2.plugin"
+        userOrg = user
+        licenses = [license_]
+        labels = [rootProject.name]
+        publicDownloadNumbers = true
+        vcsUrl = githubRepo_
+        version {
+            name = "$actualMajor.$actualMinor"
+        }
+    }
+}
 
 repositories {
     mavenCentral()
